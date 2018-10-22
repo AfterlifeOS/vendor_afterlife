@@ -25,6 +25,7 @@ SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 afterlife: $(DEFAULT_GOAL) $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(AFTERLIFE_TARGET_PACKAGE)
 	$(hide) $(SHA256) $(AFTERLIFE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(AFTERLIFE_TARGET_PACKAGE).sha256sum
+	$(hide) ./vendor/afterlife/tools/generate_json_build_info.sh $(TARGET_DEVICE) $(PRODUCT_OUT) $(AFTERLIFE_ZIP_NAME)
 	@echo "Done"
 	@echo -e "\t ===============================-Package complete-========================================="
 	@echo -e "\t Zip: $(AFTERLIFE_TARGET_PACKAGE)"
