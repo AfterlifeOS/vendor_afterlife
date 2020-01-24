@@ -78,6 +78,12 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    product_charger_res_images \
+    product_charger_res_images_vendor
+
 # Disable RescueParty due to high risk of data loss
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.disable_rescue=true
