@@ -54,6 +54,13 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/afterlife/prebuilt/common/etc/init/init.afterlife-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.afterlife-system_ext.rc
 
+# BootAnimation
+include vendor/afterlife/config/bootanimation.mk
+
+# Some permissions
+PRODUCT_COPY_FILES += \
+    vendor/afterlife/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+
 # GMS Permissions
 PRODUCT_COPY_FILES += \
     vendor/afterlife/config/permissions/privapp-permissions-gms.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-gms.xml
