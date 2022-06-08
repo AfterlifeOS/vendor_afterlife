@@ -170,6 +170,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/afterlife/overlay/common
 
 PRODUCT_PACKAGES += \
+    CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
     NetworkStackOverlay
 
