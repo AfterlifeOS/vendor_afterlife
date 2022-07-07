@@ -21,6 +21,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
 # Disable extra StrictMode features on all non-eng builds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 
+# Audio
+$(call inherit-product, vendor/afterlife/audio/audio.mk)
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/afterlife/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -217,3 +220,7 @@ PRODUCT_PACKAGES += \
 include vendor/afterlife/config/version.mk
 include vendor/afterlife/config/bootanimation.mk
 include vendor/afterlife/config/telephony.mk
+
+# Sounds (default)
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.config.ringtone=vibe.ogg
