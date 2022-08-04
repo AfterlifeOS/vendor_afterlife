@@ -43,6 +43,7 @@ SOONG_CONFIG_afterlifeGlobalVars += \
     camera_needs_client_info_lib \
     camera_needs_client_info_lib_oplus \
     needs_camera_boottime \
+    target_alternative_futex_waiters \
     uses_oplus_camera \
     uses_nothing_camera
 
@@ -70,6 +71,7 @@ SOONG_CONFIG_afterlifeQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES
 SOONG_CONFIG_afterlifeGlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
 SOONG_CONFIG_afterlifeGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS)
 SOONG_CONFIG_afterlifeGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
+SOONG_CONFIG_afterlifeGlobalVars_target_alternative_futex_waiters := $(TARGET_ALTERNATIVE_FUTEX_WAITERS)
 SOONG_CONFIG_afterlifeGlobalVars_uses_oplus_camera := $(TARGET_USES_OPLUS_CAMERA)
 SOONG_CONFIG_afterlifeGlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CAMERA)
 
