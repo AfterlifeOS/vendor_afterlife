@@ -334,6 +334,10 @@ CUSTOM_LOCALES += \
     cy_GB \
     fur_IT
 
+# Google Photos Pixel Exclusive XML
+PRODUCT_COPY_FILES += \
+    vendor/afterlife/prebuilt/common/etc/sysconfig/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml
+
 #signed
 include vendor/afterlife/config/afterlife_signed.mk
 
