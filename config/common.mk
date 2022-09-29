@@ -210,6 +210,10 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 PRODUCT_PACKAGES += \
     ThemePicker
 
+# ThemesStub
+PRODUCT_PACKAGES += \
+    ThemesStub
+
 # ThemeOverlays
 include packages/overlays/Themes/themes.mk
 
