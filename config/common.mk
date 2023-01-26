@@ -256,8 +256,12 @@ PRODUCT_PACKAGES += \
     Aperture
 
 # TouchGestures
+TARGET_SUPPORTS_TOUCHGESTURES ?= false
+ifeq ($(TARGET_SUPPORTS_TOUCHGESTURES),true)
 PRODUCT_PACKAGES += \
-    TouchGestures
+    TouchGestures \
+    TouchGesturesSettingsOverlay
+endif
 
 # Immersive Navigation
 PRODUCT_PACKAGES += \
