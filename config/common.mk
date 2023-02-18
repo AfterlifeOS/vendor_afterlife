@@ -5,8 +5,6 @@ PRODUCT_BRAND ?= AfterLife
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-DROIDX_ZIP_TYPE := Vanilla
-
 # Gapps
 ifeq ($(AFTERLIFE_GAPPS), true)
     $(call inherit-product, vendor/gms/gms_full.mk)
@@ -93,12 +91,6 @@ ifneq ($(TARGET_DISABLE_EPPE),true)
 # Require all requested packages to exist
 $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(AFTERLIFE_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
 endif
-
-# Bootanimation
-TARGET_SCREEN_WIDTH ?= 1080
-TARGET_SCREEN_HEIGHT ?= 1920
-PRODUCT_PACKAGES += \
-    bootanimation.zip
 
 # Config
 PRODUCT_PACKAGES += \
@@ -190,3 +182,4 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/afterlife/build/target/product/security/afterlife
 
 include vendor/afterlife/config/version.mk
+include vendor/afterlife/config/bootanimation.mk
