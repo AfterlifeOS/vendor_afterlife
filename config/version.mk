@@ -17,10 +17,14 @@ ifndef AFTERLIFE_BUILDTYPE
     endif
 endif
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter OFFICIAL,$(AFTERLIFE_BUILDTYPE)),)
-    AFTERLIFE_BUILDTYPE := UNOFFICIAL
-    AFTERLIFE_EXTRAVERSION :=
+# Check Official
+ifeq ($(AFTERLIFE_BUILD_TYPE), OFFICIAL)
+  LIST = $(shell cat vendor/afterlife/afterlife.devices)
+    ifeq ($(filter $(AFTERLIFE_BUILD), $(LIST)), $(AFTERLIFE_BUILD))
+      AFTERLIFE_BUILD_TYPE := OFFICIAL
+    else 
+      AFTERLIFE_BUILD_TYPE := UNOFFICIAL
+    endif
 endif
 
 ifeq ($(AFTERLIFE_BUILDTYPE), UNOFFICIAL)

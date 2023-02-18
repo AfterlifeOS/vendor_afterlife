@@ -18,6 +18,9 @@
 ifeq ($(AFTERLIFE_ZIP_TYPE), Gapps)
 	AFTERLIFE_TARGET_PACKAGE := $(PRODUCT_OUT)/afterlife-$(AFTERLIFE_VERSION)-Gapps.zip
 else 
+	AFTERLIFE_TARGET_PACKAGE := $(PRODUCT_OUT)/afterlife-$(AFTERLIFE_VERSION)-Vanilla.zip
+endif
+
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
