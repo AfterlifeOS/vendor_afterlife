@@ -171,7 +171,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.systemuicompilerfilter=speed
 
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/afterlife/overlay/common \
+    vendor/afterlife/overlay/common
 
 PRODUCT_PACKAGES += \
     NetworkStackOverlay \
@@ -180,6 +180,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/afterlife/build/target/product/security/afterlife
 
+# Themepicker
+PRODUCT_PACKAGES += \
+    ThemePicker
+
 include vendor/afterlife/config/version.mk
 include vendor/afterlife/config/bootanimation.mk
 include vendor/afterlife/config/telephony.mk
+include vendor/afterlife/config/fonts.mk
