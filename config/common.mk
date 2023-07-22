@@ -183,3 +183,4 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 include vendor/afterlife/config/version.mk
 include vendor/afterlife/config/bootanimation.mk
+include vendor/afterlife/config/telephony.mk
