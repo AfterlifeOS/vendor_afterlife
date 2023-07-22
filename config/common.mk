@@ -7,7 +7,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Gapps
 ifeq ($(AFTERLIFE_GAPPS), true)
-    $(call inherit-product, vendor/gms/gms_full.mk)
+    $(call inherit-product, vendor/gapps/common/common-vendor.mk)
     AFTERLIFE_ZIP_TYPE := Gapps
 endif
 
