@@ -205,3 +205,7 @@ include vendor/afterlife/config/fonts.mk
 # ParallelSpace
 PRODUCT_PACKAGES += \
     ParallelSpace
+
+# Aperture
+PRODUCT_PACKAGES += \
+    Aperture
