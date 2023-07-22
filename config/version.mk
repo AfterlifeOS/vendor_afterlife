@@ -7,6 +7,9 @@ else
     AFTERLIFE_BUILD_DATE := $(shell date -u +%Y%m%d)
 endif
 
+# versioning
+AFTERLIFE_BUILD_TYPE ?= UNOFFICIAL
+
 # Check Official
 ifeq ($(AFTERLIFE_BUILD_TYPE), OFFICIAL)
   LIST = $(shell cat vendor/afterlife/afterlife.devices)
