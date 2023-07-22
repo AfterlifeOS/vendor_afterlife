@@ -201,3 +201,7 @@ include vendor/afterlife/config/version.mk
 include vendor/afterlife/config/bootanimation.mk
 include vendor/afterlife/config/telephony.mk
 include vendor/afterlife/config/fonts.mk
+
+# ParallelSpace
+PRODUCT_PACKAGES += \
+    ParallelSpace
