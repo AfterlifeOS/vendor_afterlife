@@ -6,7 +6,7 @@ endif
 
 # AfterLife System Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.afterlife.version=$(AFTERLIFE_VERSION) \
+    ro.afterlife.version=$(AFTERLIFE_DISPLAY_VERSION_CODENAME) \
     ro.afterlife.releasetype=$(AFTERLIFE_BUILDTYPE) \
     ro.afterlife.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     ro.modversion=$(AFTERLIFE_VERSION) \
