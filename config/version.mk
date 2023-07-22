@@ -7,16 +7,6 @@ else
     AFTERLIFE_BUILD_DATE := $(shell date -u +%Y%m%d)
 endif
 
-# Set AFTERLIFE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
-
-ifndef AFTERLIFE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "AFTERLIFE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^AFTERLIFE_||g')
-        AFTERLIFE_BUILDTYPE := $(RELEASE_TYPE)
-    endif
-endif
-
 # Check Official
 ifeq ($(AFTERLIFE_BUILD_TYPE), OFFICIAL)
   LIST = $(shell cat vendor/afterlife/afterlife.devices)
@@ -27,13 +17,7 @@ ifeq ($(AFTERLIFE_BUILD_TYPE), OFFICIAL)
     endif
 endif
 
-ifeq ($(AFTERLIFE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        AFTERLIFE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
-
-AFTERLIFE_VERSION_SUFFIX := $(AFTERLIFE_BUILD_DATE)-$(AFTERLIFE_BUILDTYPE)$(AFTERLIFE_EXTRAVERSION)-$(AFTERLIFE_BUILD)
+AFTERLIFE_VERSION_SUFFIX := $(AFTERLIFE_BUILD_DATE)-$(AFTERLIFE_BUILD_TYPE)-$(AFTERLIFE_BUILD)
 
 # Internal version
 AFTERLIFE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(AFTERLIFE_VERSION_SUFFIX)
