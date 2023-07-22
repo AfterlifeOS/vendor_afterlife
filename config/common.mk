@@ -5,16 +5,12 @@ PRODUCT_BRAND ?= AfterLife
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-AFTERLIFE_ZIP_TYPE ?= Vanilla
+AFTERLIFE_ZIP_TYPE := Vanilla
 
 # Gapps
-ifeq ($(AFTERLIFE_GAPPS), core)
-    $(call inherit-product, vendor/gapps/common/common-vendor.mk)
-    AFTERLIFE_ZIP_TYPE := CoreGapps
-ifeq ($(AFTERLIFE_GAPPS), full)
+ifeq ($(AFTERLIFE_GAPPS), true)
     $(call inherit-product, vendor/gms/gms_full.mk)
     AFTERLIFE_ZIP_TYPE := FullGapps
-endif
 endif
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
