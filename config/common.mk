@@ -26,6 +26,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=false
 
+# Audio
+$(call inherit-product, vendor/afterlife/audio/audio.mk)
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
@@ -202,6 +204,10 @@ include packages/overlays/Themes/themes.mk
 
 # Versioning
 include vendor/afterlife/config/version.mk
+
+# Sounds (default)
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.config.ringtone=vibe.ogg
 
 include vendor/afterlife/config/bootanimation.mk
 include vendor/afterlife/config/telephony.mk
