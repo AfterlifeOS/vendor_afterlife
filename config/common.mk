@@ -197,7 +197,12 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 PRODUCT_PACKAGES += \
     ThemePicker
 
+# ThemeOverlays
+include packages/overlays/Themes/themes.mk
+
+# Versioning
 include vendor/afterlife/config/version.mk
+
 include vendor/afterlife/config/bootanimation.mk
 include vendor/afterlife/config/telephony.mk
 include vendor/afterlife/config/fonts.mk
