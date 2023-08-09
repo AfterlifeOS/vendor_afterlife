@@ -148,10 +148,6 @@ PRODUCT_COPY_FILES += \
     vendor/afterlife/config/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml
 endif
 
-# Config
-PRODUCT_PACKAGES += \
-    SimpleDeviceConfig
-
 # Extra tools in Lineage
 PRODUCT_PACKAGES += \
     bash \
