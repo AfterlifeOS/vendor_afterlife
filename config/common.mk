@@ -218,7 +218,9 @@ include vendor/afterlife/config/version.mk
 
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.config.ringtone=vibe.ogg
+    ro.config.ringtone=vibe.ogg \
+    ro.config.notification_sound=no-pro.ogg \
+    ro.config.alarm_alert=frenzy.ogg
 
 include vendor/afterlife/config/bootanimation.mk
 include vendor/afterlife/config/telephony.mk
