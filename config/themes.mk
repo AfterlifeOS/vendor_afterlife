@@ -20,3 +20,29 @@ PRODUCT_PACKAGES += \
     IconShapeLeafyOverlay \
     IconShapeRohieMeowOverlay \
     IconShapeScrollOverlay
+
+# Signal / WiFi Icons
+PRODUCT_PACKAGES += \
+    AquariumSignalOverlay \
+    BarsSignalOverlay \
+    BarsWiFiOverlay \
+    DeepSignalOverlay \
+    HuaweiSignalOverlay \
+    IosSignalOverlay \
+    InsideSignalOverlay \
+    InsideWiFiOverlay \
+    PillsSignalOverlay \
+    ROGSignalOverlay \
+    RoundSignalOverlay \
+    RoundWiFiOverlay \
+    SneakySignalOverlay \
+    SneakyWiFiOverlay \
+    StrokeSignalOverlay \
+    StrokeWiFiOverlay \
+    WavySignalOverlay \
+    WavyWiFiOverlay \
+    WeedWiFiOverlay \
+    XperiaSignalOverlay \
+    XperiaWiFiOverlay \
+    ZigZagSignalOverlay \
+    ZigZagWiFiOverlay

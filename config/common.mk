@@ -208,11 +208,11 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # Themepicker
 PRODUCT_PACKAGES += \
-    ThemePicker
-
-# ThemesStub
-PRODUCT_PACKAGES += \
+    ThemePicker \
     ThemesStub
+
+# Themes
+$(call inherit-product, vendor/afterlife/config/themes.mk)
 
 # ThemeOverlays
 include packages/overlays/Themes/themes.mk
