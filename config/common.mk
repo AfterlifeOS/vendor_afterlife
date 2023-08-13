@@ -138,6 +138,10 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 PRODUCT_PACKAGES += \
     GameSpace
 
+# GMS Permissions
+PRODUCT_COPY_FILES += \
+    vendor/afterlife/config/permissions/privapp-permissions-gms.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-gms.xml
+
 # Openssh
 PRODUCT_PACKAGES += \
     scp \
