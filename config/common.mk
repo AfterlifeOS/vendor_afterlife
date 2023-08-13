@@ -240,3 +240,7 @@ PRODUCT_PACKAGES += \
 # Aperture
 PRODUCT_PACKAGES += \
     Aperture
+
+# TouchGestures
+PRODUCT_PACKAGES += \
+    TouchGestures
