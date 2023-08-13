@@ -248,3 +248,7 @@ PRODUCT_PACKAGES += \
 # TouchGestures
 PRODUCT_PACKAGES += \
     TouchGestures
+
+# Immersive Navigation
+PRODUCT_PACKAGES += \
+    ImmersiveNavigationOverlay
