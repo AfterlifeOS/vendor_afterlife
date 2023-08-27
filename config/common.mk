@@ -70,6 +70,10 @@ endif
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.launcher.blur.appLaunch=0
 
+# App lock permission
+PRODUCT_COPY_FILES += \
+    vendor/afterlife/config/permissions/privapp-permissions-settings.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-settings.xml
+
 # Enable Android Beam on all targets
 PRODUCT_COPY_FILES += \
     vendor/afterlife/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.nfc.beam.xml
