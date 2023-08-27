@@ -234,8 +234,14 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.config.notification_sound=no-pro.ogg \
     ro.config.alarm_alert=frenzy.ogg
 
+# Bootanimation
 include vendor/afterlife/config/bootanimation.mk
+
+# Telephony
 include vendor/afterlife/config/telephony.mk
+
+# Signing
+include vendor/afterlife/config/signed.mk
 
 # ParallelSpace
 PRODUCT_PACKAGES += \
