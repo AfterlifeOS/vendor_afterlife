@@ -262,3 +262,9 @@ PRODUCT_PACKAGES += \
 # Immersive Navigation
 PRODUCT_PACKAGES += \
     ImmersiveNavigationOverlay
+
+# Vanilla
+ifneq ($(AFTERLIFE_GAPPS), true)
+PRODUCT_PACKAGES += \
+    ExactCalculator
+endif
