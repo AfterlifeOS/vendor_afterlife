@@ -15,11 +15,7 @@
 
 # -----------------------------------------------------------------
 # Lineage OTA update package
-ifeq ($(AFTERLIFE_ZIP_TYPE), Gapps)
-AFTERLIFE_TARGET_PACKAGE := $(PRODUCT_OUT)/AfterLife-$(AFTERLIFE_VERSION)-Gapps.zip
-else
-AFTERLIFE_TARGET_PACKAGE := $(PRODUCT_OUT)/AfterLife-$(AFTERLIFE_VERSION)-Vanilla.zip
-endif
+AFTERLIFE_TARGET_PACKAGE := $(PRODUCT_OUT)/AfterLife-$(AFTERLIFE_VERSION).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 

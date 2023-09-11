@@ -9,7 +9,6 @@ endif
 
 # versioning
 AFTERLIFE_CODENAME := Sinners
-AFTERLIFE_BUILD_TYPE ?= UNOFFICIAL
 
 # Check Official
 ifndef AFTERLIFE_BUILD_TYPE

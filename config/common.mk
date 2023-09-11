@@ -5,12 +5,15 @@ PRODUCT_BRAND ?= AfterLife
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-AFTERLIFE_ZIP_TYPE := Vanilla
-
 # Gapps
+AFTERLIFE_ZIP_TYPE := Vanilla
 ifeq ($(AFTERLIFE_GAPPS), true)
     $(call inherit-product, vendor/gms/products/gms.mk)
+ifeq ($(AFTERLIFE_CORE),true)
+    AFTERLIFE_ZIP_TYPE := CoreGApps
+else
     AFTERLIFE_ZIP_TYPE := Gapps
+endif
 endif
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
@@ -229,9 +232,6 @@ $(call inherit-product, vendor/afterlife/config/themes.mk)
 # ThemeOverlays
 include packages/overlays/Themes/themes.mk
 
-# Versioning
-include vendor/afterlife/config/version.mk
-
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.config.ringtone=vibe.ogg \
@@ -246,6 +246,9 @@ include vendor/afterlife/config/telephony.mk
 
 # Signing
 include vendor/afterlife/config/signed.mk
+
+# Versioning
+include vendor/afterlife/config/version.mk
 
 # ParallelSpace
 PRODUCT_PACKAGES += \
