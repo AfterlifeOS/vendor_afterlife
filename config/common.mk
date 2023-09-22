@@ -234,7 +234,7 @@ include packages/overlays/Themes/themes.mk
 
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.config.ringtone=vibe.ogg \
+    ro.config.ringtone=NewSongette.ogg \
     ro.config.notification_sound=no-pro.ogg \
     ro.config.alarm_alert=frenzy.ogg
 

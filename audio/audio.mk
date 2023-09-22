@@ -21,4 +21,4 @@ LOCAL_PATH := vendor/afterlife/audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/alarms/frenzy.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/alarms/frenzy.ogg \
     $(LOCAL_PATH)/notifications/no-pro.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/no-pro.ogg \
-    $(LOCAL_PATH)/ringtones/vibe.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/vibe.ogg
+    $(LOCAL_PATH)/ringtones/NewSongette.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/NewSongette.ogg
