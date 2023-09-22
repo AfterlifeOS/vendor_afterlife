@@ -32,6 +32,7 @@ SOONG_CONFIG_afterlifeGlobalVars += \
     additional_gralloc_10_usage_bits \
     disable_bluetooth_le_read_buffer_size_v2 \
     disable_bluetooth_le_set_host_feature \
+    gralloc_handle_has_custom_content_md_reserved_size \
     gralloc_handle_has_reserved_size \
     target_init_vendor_lib \
     target_ld_shim_libs \
@@ -63,6 +64,7 @@ SOONG_CONFIG_afterlifeQcomVars += \
 endif
 
 # Soong bool variables
+SOONG_CONFIG_afterlifeGlobalVars_gralloc_handle_has_custom_content_md_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE)
 SOONG_CONFIG_afterlifeGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_afterlifeGlobalVars_uses_egl_display_array := $(TARGET_USES_EGL_DISPLAY_ARRAY)
 SOONG_CONFIG_afterlifeNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
@@ -78,6 +80,7 @@ SOONG_CONFIG_afterlifeGlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CA
 # Set default values
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
 TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE ?= false
+TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE ?= false
 TARGET_INIT_VENDOR_LIB ?= vendor_init
 TARGET_SURFACEFLINGER_UDFPS_LIB ?= surfaceflinger_udfps_lib
 TARGET_TRUST_USB_CONTROL_PATH ?= /proc/sys/kernel/deny_new_usb
