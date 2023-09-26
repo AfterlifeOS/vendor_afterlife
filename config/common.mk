@@ -256,7 +256,8 @@ PRODUCT_PACKAGES += \
 
 # Aperture
 PRODUCT_PACKAGES += \
-    Aperture
+    Aperture \
+    OmniJaws
 
 # TouchGestures
 TARGET_SUPPORTS_TOUCHGESTURES ?= false
