@@ -28,4 +28,5 @@ ifdef AFTERLIFE_MAINTAINER
        ro.afterlife.maintainer=$(AFTERLIFE_MAINTAINER)
 else
     $(warning "No maintainer name detected, building as unofficial build.")
+    AFTERLIFE_BUILD_TYPE := UNOFFICIAL
 endif
