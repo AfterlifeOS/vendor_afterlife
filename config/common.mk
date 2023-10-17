@@ -9,7 +9,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 AFTERLIFE_ZIP_TYPE := Vanilla
 ifeq ($(AFTERLIFE_GAPPS), true)
     $(call inherit-product, vendor/gms/products/gms.mk)
-ifeq ($(AFTERLIFE_CORE),true)
+ifeq ($(AFTERLIFE_CORE), true)
     AFTERLIFE_ZIP_TYPE := CoreGApps
 else
     AFTERLIFE_ZIP_TYPE := Gapps
