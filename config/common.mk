@@ -255,6 +255,9 @@ include vendor/afterlife/config/signed.mk
 # Versioning
 include vendor/afterlife/config/version.mk
 
+# Charging animation
+include vendor/afterlife/config/charger.mk
+
 # ParallelSpace
 PRODUCT_PACKAGES += \
     ParallelSpace
