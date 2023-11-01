@@ -263,9 +263,11 @@ PRODUCT_PACKAGES += \
     ParallelSpace
 
 # Aperture
+ifneq ($(strip $(BUILD_AOSP_CAMERA)), true)
 PRODUCT_PACKAGES += \
     Aperture \
     OmniJaws
+endif
 
 # TouchGestures
 TARGET_SUPPORTS_TOUCHGESTURES ?= false
