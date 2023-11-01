@@ -227,6 +227,9 @@ PRODUCT_PACKAGES += \
     ExactCalculator \
     LatinIME
 
+# Inherit SystemUI Clocks if they exist
+$(call inherit-product-if-exists, vendor/SystemUIClocks/product.mk)
+
 include vendor/afterlife/config/version.mk
 
 include vendor/afterlife/config/afterlife_boot.mk
