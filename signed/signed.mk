@@ -6,3 +6,5 @@ ExWhyZed9
 Itseunbinn
 sweetbtrfly
 JrInfected
+josexda
+Curse
