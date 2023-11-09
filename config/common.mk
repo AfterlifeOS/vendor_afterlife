@@ -265,9 +265,13 @@ PRODUCT_PACKAGES += \
 # Aperture
 ifneq ($(strip $(BUILD_AOSP_CAMERA)), true)
 PRODUCT_PACKAGES += \
-    Aperture \
-    OmniJaws
+    Aperture
 endif
+
+# Apps
+PRODUCT_PACKAGES += \
+    OmniJaws \
+    NeverLandStub
 
 # TouchGestures
 TARGET_SUPPORTS_TOUCHGESTURES ?= false
