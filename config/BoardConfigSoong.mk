@@ -34,6 +34,7 @@ SOONG_CONFIG_afterlifeGlobalVars += \
     disable_bluetooth_le_set_host_feature \
     gralloc_handle_has_custom_content_md_reserved_size \
     gralloc_handle_has_reserved_size \
+    camera_uses_newer_hidl_override_format \
     target_init_vendor_lib \
     target_ld_shim_libs \
     target_surfaceflinger_udfps_lib \
@@ -66,6 +67,7 @@ endif
 # Soong bool variables
 SOONG_CONFIG_afterlifeGlobalVars_gralloc_handle_has_custom_content_md_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE)
 SOONG_CONFIG_afterlifeGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
+SOONG_CONFIG_afterlifeGlobalVars_camera_uses_newer_hidl_override_format := $(TARGET_CAMERA_USES_NEWER_HIDL_OVERRIDE_FORMAT)
 SOONG_CONFIG_afterlifeGlobalVars_uses_egl_display_array := $(TARGET_USES_EGL_DISPLAY_ARRAY)
 SOONG_CONFIG_afterlifeNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
 SOONG_CONFIG_afterlifeQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
