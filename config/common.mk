@@ -270,6 +270,7 @@ endif
 
 # Apps
 PRODUCT_PACKAGES += \
+    AfterHomeQuickStep \
     OmniJaws \
     NeverLandStub
 
