@@ -160,7 +160,8 @@ PRODUCT_COPY_FILES += \
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/afterlife/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+    vendor/afterlife/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml \
+    vendor/afterlife/config/permissions/privapp-permissions-afterlife-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-afterlife-product.xml
 
 # Openssh
 PRODUCT_PACKAGES += \
@@ -276,6 +277,7 @@ endif
 PRODUCT_PACKAGES += \
     AfterHomeQuickStep \
     OmniJaws \
+    SettingsIntelligenceGoogle \
     NeverLandStub
 
 # TouchGestures
