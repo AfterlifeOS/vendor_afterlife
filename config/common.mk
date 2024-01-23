@@ -249,6 +249,12 @@ PRODUCT_COPY_FILES += \
 # Pixel customization
 TARGET_SUPPORTS_GOOGLE_BATTERY ?= false
 
+# Sounds (default)
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.config.ringtone=GhimeGhime.ogg \
+    ro.config.notification_sound=no-pro.ogg \
+    ro.config.alarm_alert=frenzy.ogg
+
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
@@ -285,7 +291,4 @@ PRODUCT_PACKAGES += \
 include vendor/afterlife/config/version.mk
 include vendor/afterlife/config/bootanimation.mk
 include vendor/afterlife/config/telephony.mk
-
-# Sounds (default)
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.config.ringtone=vibe.ogg
+include vendor/afterlife/config/pixel_props.mk
