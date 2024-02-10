@@ -243,7 +243,7 @@ include packages/overlays/Themes/themes.mk
 
 # Sounds (default)
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.config.ringtone=SnowBlanket.ogg \
+    ro.config.ringtone=GhimeGhime.ogg \
     ro.config.notification_sound=no-pro.ogg \
     ro.config.alarm_alert=frenzy.ogg
 
