@@ -218,7 +218,8 @@ PRODUCT_PACKAGES += \
     Glimpse \
     OmniJaws \
     Recorder \
-    ExactCalculator
+    ExactCalculator \
+    LatinIME
 
 include vendor/afterlife/config/version.mk
 
