@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Include AOSP audio files
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage14.mk)
+
 # 2019 Material product sounds (CC-BY 4.0)
 # Source:  https://material.io/design/sound/sound-resources.html
 LOCAL_PATH := vendor/afterlife/prebuilt/common/media/audio
