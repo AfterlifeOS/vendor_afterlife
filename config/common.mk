@@ -120,7 +120,8 @@ endif
 
 # Config
 PRODUCT_PACKAGES += \
-    SimpleDeviceConfig
+    SimpleDeviceConfig \
+    SimpleSettingsConfig
 
 # Extra tools in AfterLife
 PRODUCT_PACKAGES += \
