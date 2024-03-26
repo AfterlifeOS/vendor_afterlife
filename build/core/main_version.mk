@@ -4,22 +4,18 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)
 endif
 
-# LineageOS System Version
+# AfterLife System Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.modversion=$(LINEAGE_VERSION) \
-    ro.lineagelegal.url=https://lineageos.org/legal
+    ro.modversion=$(AFTERLIFE_VERSION) \
 
-# LineageOS Platform Display Version
+# AfterLife Platform Display Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION)
+    ro.afterlife.display.version=$(AFTERLIFE_DISPLAY_VERSION)
 
-# LineageOS Platform SDK Version
+# AfterLife Platform SDK Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.build.version.plat.sdk=$(LINEAGE_PLATFORM_SDK_VERSION)
+    ro.afterlife.build.version.plat.sdk=$(AFTERLIFE_PLATFORM_SDK_VERSION)
 
-# LineageOS Platform Internal Version
+# AfterLife Platform Internal Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+    ro.afterlife.build.version.plat.rev=$(AFTERLIFE_PLATFORM_REV)

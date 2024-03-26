@@ -1,2 +1,2 @@
-# Include LineageOS versions
-include $(TOPDIR)vendor/lineage/build/core/main_version.mk
+# Include AfterLife Project versions
+include $(TOPDIR)vendor/afterlife/build/core/main_version.mk
