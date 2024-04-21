@@ -10,3 +10,7 @@ PRODUCT_PACKAGES += \
 # Include AfterLife LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/afterlife/overlay/dictionaries
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/afterlife/overlay/dictionaries
+
+# Settings
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.settings.large_screen_opt.enabled=true
