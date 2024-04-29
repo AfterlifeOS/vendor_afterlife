@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 #
 # Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2013 The AfterLife Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +22,7 @@ from importlib import reload
 
 def main(argv):
     reload(sys)
-    original_file = 'vendor/aosp/prebuilt/common/etc/apns-conf.xml'
+    original_file = 'vendor/afterlife/prebuilt/common/etc/apns-conf.xml'
 
     if len(argv) == 3:
         output_file_path = argv[1]
