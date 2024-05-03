@@ -47,7 +47,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/Vendor_045e_Product_0719.kl
 
 # Google Service
-$(call inherit-product, vendor/gms/products/gms.mk)
+$(call inherit-product-if-exists, vendor/gms/products/gms.mk)
 
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED := false
