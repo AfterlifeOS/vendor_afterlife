@@ -1,5 +1,5 @@
 # AOSP Revision
-export AOSP_REVISION=$(grep "default revision" ".repo/manifests/default.xml" | awk -F '/' '{print $3}' | awk -F '"' '{print $1}')
+export AOSP_REVISION=$(grep "name=\"aosp\"" ".repo/manifests/default.xml" -A 3 | tail -1 | awk -F '/' '{print $3}' | awk -F '"' '{print $1}')
 echo "=========================================="
 echo "    Prepare your self and Environment     "
 echo "=========================================="
