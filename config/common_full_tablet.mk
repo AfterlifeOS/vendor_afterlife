@@ -15,6 +15,4 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/afterlife/overlay/dictionaries
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.settings.large_screen_opt.enabled=true
 
-$(call inherit-product, vendor/droidx/config/telephony.mk)
-
 $(call inherit-product, vendor/afterlife/config/telephony.mk)

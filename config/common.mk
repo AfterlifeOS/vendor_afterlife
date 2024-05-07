@@ -103,7 +103,7 @@ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
 # Clean up packages cache to avoid wrong strings and resources
 PRODUCT_COPY_FILES += \
-    vendor/droidx/prebuilt/common/bin/clean_cache.sh:system/bin/clean_cache.sh
+    vendor/afterlife/prebuilt/common/bin/clean_cache.sh:system/bin/clean_cache.sh
 
 # Strip the local variable table and the local variable type table to reduce
 # the size of the system image. This has no bearing on stack traces, but will
