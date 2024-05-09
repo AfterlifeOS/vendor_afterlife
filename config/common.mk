@@ -204,6 +204,14 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     ThemesStub
 
+# Apps
+PRODUCT_PACKAGES += \
+    Aperture \
+    Etar \
+    Glimpse \
+    Recorder \
+    ExactCalculator
+
 include vendor/afterlife/config/version.mk
 
 include vendor/afterlife/config/afterlife_boot.mk
