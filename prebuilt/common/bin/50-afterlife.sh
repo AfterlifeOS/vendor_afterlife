@@ -2,8 +2,8 @@
 #
 # ADDOND_VERSION=2
 #
-# /system/addon.d/50-lineage.sh
-# During a LineageOS upgrade, this script backs up /system/etc/hosts,
+# /system/addon.d/50-afterlife.sh
+# During a AfterLife upgrade, this script backs up /system/etc/hosts,
 # /system is formatted and reinstalled, then the file is restored.
 #
 
