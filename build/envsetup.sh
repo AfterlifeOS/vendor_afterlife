@@ -49,18 +49,6 @@ function mk_timer()
     return $ret
 }
 
-function fayakun()
-{
-    breakfast $*
-    if [ $? -eq 0 ]; then
-        mka afterlife
-    else
-        echo "No such item in brunch menu. Try 'breakfast'"
-        return 1
-    fi
-    return $?
-}
-
 function breakfast()
 {
     target=$1
