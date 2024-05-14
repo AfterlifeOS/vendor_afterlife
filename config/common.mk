@@ -231,5 +231,6 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, vendor/SystemUIClocks/product.mk)
 
 include vendor/afterlife/config/afterlife_boot.mk
+include vendor/afterlife/config/afterlife_signed.mk
 
 include vendor/afterlife/config/version.mk
