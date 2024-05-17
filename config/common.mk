@@ -118,31 +118,10 @@ ifneq ($(TARGET_DISABLE_EPPE),true)
 $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(AFTERLIFE_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
 endif
 
-# Config
-PRODUCT_PACKAGES += \
-    SimpleDeviceConfig \
-    SimpleSettingsConfig
-
-# Extra tools in AfterLife
-PRODUCT_PACKAGES += \
-    bash \
-    curl \
-    getcap \
-    htop \
-    nano \
-    setcap \
-    vim
-
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/curl \
     system/bin/getcap \
     system/bin/setcap
-
-# Filesystems tools
-PRODUCT_PACKAGES += \
-    fsck.ntfs \
-    mkfs.ntfs \
-    mount.ntfs
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/fsck.ntfs \
@@ -151,22 +130,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/%/libfuse-lite.so \
     system/%/libntfs-3g.so
 
-# Openssh
-PRODUCT_PACKAGES += \
-    scp \
-    sftp \
-    ssh \
-    sshd \
-    sshd_config \
-    ssh-keygen \
-    start-ssh
-
 PRODUCT_COPY_FILES += \
     vendor/afterlife/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
-
-# rsync
-PRODUCT_PACKAGES += \
-    rsync
 
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -179,16 +144,6 @@ PRODUCT_PACKAGES_DEBUG += \
 ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/procmem
-endif
-
-# Root
-PRODUCT_PACKAGES += \
-    adb_root
-ifneq ($(TARGET_BUILD_VARIANT),user)
-ifeq ($(WITH_SU),true)
-PRODUCT_PACKAGES += \
-    su
-endif
 endif
 
 # SystemUI
@@ -206,31 +161,14 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/afterlife/overlay/common
 
-PRODUCT_PACKAGES += \
-    NetworkStackOverlay \
-
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/afterlife/build/target/product/security/afterlife
-
-# Themepicker
-PRODUCT_PACKAGES += \
-    ThemePicker \
-    ThemesStub
-
-# Apps
-PRODUCT_PACKAGES += \
-    Aperture \
-    Etar \
-    Glimpse \
-    OmniJaws \
-    Recorder \
-    ExactCalculator \
-    LatinIME
 
 # Inherit SystemUI Clocks if they exist
 $(call inherit-product-if-exists, vendor/SystemUIClocks/product.mk)
 
 include vendor/afterlife/config/afterlife_boot.mk
+include vendor/afterlife/config/afterlife_packages.mk
 include vendor/afterlife/config/afterlife_signed.mk
 
 include vendor/afterlife/config/version.mk
