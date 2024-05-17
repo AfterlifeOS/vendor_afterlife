@@ -32,6 +32,8 @@ if [ -f $existingOTAjson ]; then
         oem=`grep -n "\"oem\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         device=`grep -n "\"device\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         filename=$3
+        version=`echo "$3" | cut -d '-' -f 2 | cut -d 'v' -f 2`
+        codename=`echo "$3" | cut -d '-' -f 3`
         buildprop=$2/system/build.prop
         linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
         timestamp=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
@@ -55,6 +57,8 @@ if [ -f $existingOTAjson ]; then
                         "maintainer": "'$maintainer'",
                         "oem": "'$oem'",
                         "device": "'$device'",
+                        "version": "'$version'",
+                        "codename": "'$codename'",
                         "filename": "'$filename'",
                         "download": "https://sourceforge.net/projects/afterlife-projects/files/release/'$1'/'$3'/download",
                         "timestamp": '$timestamp',
@@ -70,7 +74,8 @@ if [ -f $existingOTAjson ]; then
 }' >> $output
 else
         filename=$3
-        version=`echo $v_max.$v_min`
+        version=`echo "$3" | cut -d '-' -f 2 | cut -d 'v' -f 2`
+        codename=`echo "$3" | cut -d '-' -f 3`
         buildprop=$2/system/build.prop
         linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
         timestamp=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
@@ -84,6 +89,8 @@ else
                         "maintainer": "''",
                         "oem": "''",
                         "device": "''",
+                        "version": "'$version'",
+                        "codename": "'$codename'",
                         "filename": "'$filename'",
                         "download": "https://sourceforge.net/projects/afterlife-projects/files/release/'$1'/'$3'/download",
                         "timestamp": '$timestamp',
