@@ -6,7 +6,7 @@
 
 # Apps
 PRODUCT_PACKAGES += \
-    AfterHome \
+    AfterHomeQuickStep \
     Aperture \
     Etar \
     ExactCalculator \
@@ -14,6 +14,9 @@ PRODUCT_PACKAGES += \
     LatinIME \
     OmniJaws \
     Recorder
+
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    AfterHomeQuickStep
 
 # Config
 PRODUCT_PACKAGES += \
