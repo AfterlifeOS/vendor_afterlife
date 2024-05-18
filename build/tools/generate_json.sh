@@ -32,7 +32,7 @@ if [ -f $existingOTAjson ]; then
         oem=`grep -n "\"oem\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         device=`grep -n "\"device\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         filename=$3
-        version=`echo "$3" | cut -d '-' -f 2 | cut -d 'v' -f 2`
+        version=`echo "$3" | cut -d '-' -f 2 | cut -d 'V' -f 2`
         codename=`echo "$3" | cut -d '-' -f 3`
         buildprop=$2/system/build.prop
         linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
@@ -65,7 +65,6 @@ if [ -f $existingOTAjson ]; then
                         "md5": "'$md5'",
                         "sha256": "'$sha256'",
                         "size": '$size',
-                        "version": "'$version'",
                         "buildtype": "'$buildtype'",
                         "forum": "'$forum'",
                         "telegram": "'$telegram'"
@@ -74,7 +73,7 @@ if [ -f $existingOTAjson ]; then
 }' >> $output
 else
         filename=$3
-        version=`echo "$3" | cut -d '-' -f 2 | cut -d 'v' -f 2`
+        version=`echo "$3" | cut -d '-' -f 2 | cut -d 'V' -f 2`
         codename=`echo "$3" | cut -d '-' -f 3`
         buildprop=$2/system/build.prop
         linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
@@ -97,7 +96,6 @@ else
                         "md5": "'$md5'",
                         "sha256": "'$sha256'",
                         "size": '$size',
-                        "version": "'$version'",
                         "buildtype": "''",
                         "forum": "''",
                         "telegram": "''"
