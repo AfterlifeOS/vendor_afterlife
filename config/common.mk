@@ -162,8 +162,20 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 # Inherit SystemUI Clocks if they exist
 $(call inherit-product-if-exists, vendor/SystemUIClocks/product.mk)
 
+# Audio
+include vendor/afterlife/config/afterlife_audio.mk
+
+# Bootanimation
 include vendor/afterlife/config/afterlife_boot.mk
+
+# Packages
 include vendor/afterlife/config/afterlife_packages.mk
+
+# Signed
 include vendor/afterlife/config/afterlife_signed.mk
 
+# Versioning
 include vendor/afterlife/config/version.mk
+
+# Overlays Themes
+include packages/overlays/Themes/themes.mk
