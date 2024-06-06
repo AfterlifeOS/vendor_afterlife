@@ -16,7 +16,7 @@
 #
 
 # $1=TARGET_DEVICE, $2=PRODUCT_OUT, $3=FILE_NAME
-existingOTAjson=./device/afterlife/ota/$1/build.json
+existingOTAjson=./device/afterlife/ota/$1/updates.json
 output=$2/$1.json
 
 # cleanup old file
