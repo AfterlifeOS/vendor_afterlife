@@ -1,9 +1,6 @@
 # Inherit common mobile AfterLife stuff
 $(call inherit-product, vendor/afterlife/config/common.mk)
 
-# Include AOSP audio files
-include vendor/afterlife/config/aosp_audio.mk
-
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images

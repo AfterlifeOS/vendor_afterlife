@@ -179,3 +179,9 @@ include vendor/afterlife/config/version.mk
 
 # Overlays Themes
 include packages/overlays/Themes/themes.mk
+
+# Sounds (default)
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.config.ringtone=Cartel.ogg \
+    ro.config.notification_sound=no-pro.ogg \
+    ro.config.alarm_alert=frenzy.ogg

@@ -21,4 +21,4 @@ LOCAL_PATH := vendor/afterlife/prebuilt/common/media/audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/alarms/frenzy.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/alarms/frenzy.ogg \
     $(LOCAL_PATH)/notifications/no-pro.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/no-pro.ogg \
-    $(LOCAL_PATH)/ringtones/GhimeGhime.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/GhimeGhime.ogg
+    $(LOCAL_PATH)/ringtones/GhimeGhime.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Cartel.ogg
