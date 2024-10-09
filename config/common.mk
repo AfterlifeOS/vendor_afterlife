@@ -165,7 +165,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    vendor/clover/config/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml
+    vendor/afterlife/config/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml
 
 # rsync
 PRODUCT_PACKAGES += \
@@ -233,4 +233,4 @@ include vendor/afterlife/config/version.mk
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 # Fonts
-include vendor/clover/config/fonts.mk
+include vendor/afterlife/config/fonts.mk
