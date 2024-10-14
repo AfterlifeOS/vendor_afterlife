@@ -58,6 +58,7 @@ function goafterlife()
     target=$1
     local variant="userdebug"
     local clean_build="true"
+    local upload_zip="false"
 
     if [ $# -eq 0 ]; then
         # No arguments, so let's have the full menu
@@ -71,6 +72,10 @@ function goafterlife()
                 case "${1}" in
                     --dirty)
                         clean_build="false"
+                        shift
+                        ;;
+                    --release)
+                        upload_zip="true"
                         shift
                         ;;
                     user)
@@ -106,7 +111,34 @@ function goafterlife()
     fi
     m afterlife -j$(nproc --all)
 
+    if [ "upload_zip" = "true" ]; then
+        gorelease $target
+    fi
+
     return $?
+}
+
+function gorelease()
+{
+    target=$1
+    local pdapi="ef0ff275-9cd2-4644-adf0-545ef421458e"
+    local upfile="out/target/product/$target/afterlife*.zip"
+    local fname="${upfile##*/}"
+
+    if [ ! -f $upile ]; then
+        echo "Upload failed!"
+        exit
+    fi
+
+    for cfile in "$upfile"
+    do
+        echo "Uploading to server ..."
+        uplink=$(curl -# -F "name=$fname" -F "file=@$cfile" -u :$pdapi https://pixeldrain.com/api/file)
+        dlink=$(echo $uplink | grep -Po '(?<="id":")[^"]*')
+        upmsg="$taget: $dlink"
+        curl -F document=@"out/target/product/$target/$target.json" "https://api.telegram.org/bot5478001056:AAFXt9jrRlb54Ttx_OtGaZ7NqNCWci_bw4o/sendDocument?chat_id=-1001834737844" -F caption="$upmsg" > /dev/null
+        echo ""
+    done
 }
 
 function breakfast()
