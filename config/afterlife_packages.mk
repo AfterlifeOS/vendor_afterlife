@@ -1,6 +1,11 @@
 # AfterEcho
 ifeq ($(TARGET_USE_ECHO),true)
     $(call inherit-product-if-exists, vendor/dolby/afterlife/afterlife.mk)
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.dolby.enabled=1
+else
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.dolby.enabled=0
 endif
 
 # BtHelper
