@@ -1,6 +1,6 @@
 #!/system/bin/sh
 #
-# LineageOS A/B OTA Postinstall Script
+# The afterlife A/B OTA Postinstall Script
 #
 
 /postinstall/system/bin/backuptool_ab.sh backup
