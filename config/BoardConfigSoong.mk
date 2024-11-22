@@ -28,7 +28,6 @@ $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))
 
 SOONG_CONFIG_NAMESPACES += afterlifeGlobalVars
 SOONG_CONFIG_afterlifeGlobalVars += \
-    aapt_version_code \
     additional_gralloc_10_usage_bits \
     bootloader_message_offset \
     camera_needs_client_info_lib \
@@ -111,7 +110,6 @@ TARGET_TRUST_USB_CONTROL_ENABLE ?= 1
 TARGET_TRUST_USB_CONTROL_DISABLE ?= 0
 
 # Soong value variables
-SOONG_CONFIG_afterlifeGlobalVars_aapt_version_code := $(shell date -u +%Y%m%d)
 SOONG_CONFIG_afterlifeGlobalVars_additional_gralloc_10_usage_bits := $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS)
 SOONG_CONFIG_afterlifeGlobalVars_bootloader_message_offset := $(BOOTLOADER_MESSAGE_OFFSET)
 SOONG_CONFIG_afterlifeGlobalVars_target_camera_package_name := $(TARGET_CAMERA_PACKAGE_NAME)
@@ -131,6 +129,7 @@ SOONG_CONFIG_afterlifeGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SUR
 SOONG_CONFIG_afterlifeGlobalVars_target_trust_usb_control_path := $(TARGET_TRUST_USB_CONTROL_PATH)
 SOONG_CONFIG_afterlifeGlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_USB_CONTROL_ENABLE)
 SOONG_CONFIG_afterlifeGlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_USB_CONTROL_DISABLE)
+
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_afterlifeQcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
 else
