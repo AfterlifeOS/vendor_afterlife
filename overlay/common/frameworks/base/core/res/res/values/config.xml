@@ -216,6 +216,9 @@
     <string name="config_headlineFontFamilyMedium">google-sans-medium</string>
     <string name="config_headlineFontFeatureSettings">ss03</string>
 
+    <!-- Circle to search -->
+    <string name="config_defaultContextualSearchPackageName" translatable="false">com.google.android.googlequicksearchbox</string>
+
     <!-- Define device configs on boot -->
     <string-array name="global_device_configs_override">
         <!-- ART heap compaction for cached apps -->
