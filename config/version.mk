@@ -15,5 +15,4 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.afterlife.version=$(AFTERLIFE_VERSION) \
     ro.afterlife.display.version=$(AFTERLIFE_DISPLAY_VERSION) \
     ro.afterlife.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.afterlife.releasetype=$(AFTERLIFE_BUILDTYPE) \
-    ro.modversion=$(AFTERLIFE_VERSION)
+    ro.afterlife.releasetype=$(AFTERLIFE_BUILDTYPE) 
