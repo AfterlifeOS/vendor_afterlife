@@ -244,7 +244,6 @@ PRODUCT_PACKAGES += \
     AndroidBlackThemeOverlay \
     CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
-    NavigationBarNoHintOverlay \
     NetworkStackOverlay \
     PermissionControllerOverlay
 
