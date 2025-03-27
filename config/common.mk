@@ -236,3 +236,6 @@ include vendor/afterlife/config/version.mk
 
 # Fonts
 include vendor/afterlife/config/fonts.mk
+
+# Signing
+ -include vendor/afterlife-priv/keys/keys.mk
