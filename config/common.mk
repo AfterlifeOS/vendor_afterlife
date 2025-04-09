@@ -259,5 +259,8 @@ include vendor/afterlife/config/fonts.mk
 # Signed
 include vendor/afterlife/config/afterlife_signed.mk
 
+# Overlays Themes
+include packages/overlays/Themes/themes.mk
+
 # Signing
  -include vendor/afterlife-priv/keys/keys.mk
