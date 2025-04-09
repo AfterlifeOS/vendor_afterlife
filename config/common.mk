@@ -172,7 +172,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Packages
 PRODUCT_PACKAGES += \
-    Launcher3QuickStep \
+    AfterHomeQuickStep \
     ThemePicker
 
 # Permissions
