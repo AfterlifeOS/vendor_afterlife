@@ -253,10 +253,11 @@ CUSTOM_LOCALES += \
 
 include vendor/afterlife/config/version.mk
 
--include $(WORKSPACE)/build_env/image-auto-bits.mk
-
 # Fonts
 include vendor/afterlife/config/fonts.mk
+
+# Signed
+include vendor/afterlife/config/afterlife_signed.mk
 
 # Signing
  -include vendor/afterlife-priv/keys/keys.mk
