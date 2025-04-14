@@ -253,6 +253,9 @@ CUSTOM_LOCALES += \
 
 include vendor/afterlife/config/version.mk
 
+# Google apps and services
+$(call inherit-product, vendor/gms/products/gms.mk)
+
 # Fonts
 include vendor/afterlife/config/fonts.mk
 

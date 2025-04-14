@@ -25,15 +25,72 @@ function check_product()
     # hide successful answers, but allow the errors to show
 }
 
-function brunch()
+function goafterlife()
 {
-    breakfast $*
-    if [ $? -eq 0 ]; then
-        mka afterlife
-    else
-        echo "No such item in brunch menu. Try 'breakfast'"
+    target=$1
+    local variant="userdebug"
+    local clean_build="true"
+    local release_target="ap4a"  # Default 
+
+    # Path ke file config
+    config_file="vendor/afterlife/release/build_config/ap4a.textproto"
+
+    if [ -f "$config_file" ]; then
+        release_target=$(grep -oP '(?<=value: ").*(?=")' "$config_file" | sed 's/aconfig_value_set-afterlife-//')
+    fi
+
+    if [ $# -eq 0 ]; then
+        echo "Error: Device codename is required!"
         return 1
     fi
+
+    while [[ $# -gt 0 ]]; do
+        case "${1}" in
+            --dirty)
+                clean_build="false"
+                shift
+                ;;
+            user)
+                variant="user"
+                shift
+                ;;
+            userdebug)
+                variant="userdebug"
+                shift
+                ;;
+            eng)
+                variant="eng"
+                shift
+                ;;
+            ap*)
+                release_target="${1}"
+                shift
+                ;;
+            *)
+                target="${1}"
+                shift
+                ;;
+        esac
+    done
+
+    if [ -z "$target" ]; then
+        echo "Error: Device codename is required!"
+        return 1
+    fi
+
+    if [ -z "$variant" ]; then
+        variant="userdebug"
+    fi
+
+    lunch afterlife_${target}-${release_target}-${variant}
+
+    rm -rf out/target/product/$target/AfterLife*zip*
+
+    if [ "$clean_build" = "true" ]; then
+        make installclean
+    fi
+    m afterlife -j$(nproc --all)
+
     return $?
 }
 

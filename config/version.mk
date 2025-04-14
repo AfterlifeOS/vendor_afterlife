@@ -1,25 +1,38 @@
 PRODUCT_VERSION_MAJOR = 8
 PRODUCT_VERSION_MINOR = 0
 
-CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
+ifeq ($(AFTERLIFE_VERSION_APPEND_TIME_OF_DAY),true)
+    AFTERLIFE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
+else
+    AFTERLIFE_BUILD_DATE := $(shell date -u +%Y%m%d)
+endif
 
-AFTERLIFE_BUILDTYPE ?= UNOFFICIAL
+ifndef AFTERLIFE_GAPPS
+    AFTERLIFE_ZIP_TYPE := Vanilla
 
-AFTERLIFE_VERSION := AfterlifeOS-v$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)_$(AFTERLIFE_CODENAME)-$(CURRENT_DEVICE)-$(AFTERLIFE_BUILDTYPE)-$(shell date -u +%Y%m%d-%H%M)
+else
+    $(call inherit-product-if-exists, vendor/gms/products/gms.mk)
 
-# Display version
-AFTERLIFE_DISPLAY_VERSION := v$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)
+    ifdef GAPPS_CORE
+        AFTERLIFE_ZIP_TYPE := CoreGApps
+    else ifdef GAPPS_BASIC
+        AFTERLIFE_ZIP_TYPE := BasicGApps
+    else
+        AFTERLIFE_ZIP_TYPE := GApps
+    endif
+endif
 
 # versioning
 AFTERLIFE_CODENAME := BrotherHood
 AFTERLIFE_VERSION_EXTRA := VanillaIceCream
 
+AFTERLIFE_VERSION_SUFFIX := $(AFTERLIFE_BUILD_TYPE)_$(AFTERLIFE_BUILD_DATE)
+
+# Internal version
+AFTERLIFE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)_$(AFTERLIFE_CODENAME)-$(AFTERLIFE_CODENAME_EXTRA)-$(AFTERLIFE_VERSION_SUFFIX)-$(AFTERLIFE_ZIP_TYPE)
+
+# Display version
+AFTERLIFE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(AFTERLIFE_VERSION_SUFFIX)
+
 # Codename version
 AFTERLIFE_DISPLAY_VERSION_CODENAME := 15.1 | $(AFTERLIFE_CODENAME)
-
-# AfterlifeOS version properties
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.afterlife.version=$(AFTERLIFE_VERSION) \
-    ro.afterlife.display.version=$(AFTERLIFE_DISPLAY_VERSION) \
-    ro.afterlife.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.afterlife.releasetype=$(AFTERLIFE_BUILDTYPE) 
