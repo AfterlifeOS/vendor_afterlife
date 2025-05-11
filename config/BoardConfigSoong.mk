@@ -19,15 +19,6 @@ EXPORT_TO_SOONG := \
 $(call add_soong_config_namespace,afterlifeVarsPlugin)
 $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call add_soong_config_var,afterlifeVarsPlugin,$(v))))
 
-SOONG_CONFIG_NAMESPACES += afterlifeGlobalVars
-SOONG_CONFIG_afterlifeGlobalVars += \
-    camera_needs_client_info_lib \
-    camera_needs_client_info_lib_oplus
-
-# Soong bool variables
-SOONG_CONFIG_afterlifeGlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
-SOONG_CONFIG_afterlifeGlobalVars_camera_needs_client_info_lib_oplus := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS))
-
 # Camera
 ifneq ($(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED),)
     $(error TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED is deprecated, please migrate to soong_config_set,camera,override_format_from_reserved)
@@ -40,6 +31,14 @@ ifneq ($(TARGET_CAMERA_SERVICE_EXT_LIB),)
 endif
 ifneq ($(TARGET_USES_MIUI_CAMERA),)
     $(call soong_config_set,camera,uses_miui_camera,$(TARGET_USES_MIUI_CAMERA))
+endif
+
+ifneq ($(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB),)
+    $(call soong_config_set,camera,needs_client_info_lib,$(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB))
+endif
+
+ifneq ($(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS),)
+    $(call soong_config_set,camera,needs_client_info_lib_oplus,$(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS))
 endif
 
 # Libui
