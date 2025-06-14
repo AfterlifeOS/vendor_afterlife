@@ -97,6 +97,10 @@ endif
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.sip.voip.xml
 
+# Enable Material Design 3 Expressive
+PRODUCT_PRODUCT_PROPERTIES += \
+    is_expressive_design_enabled=true
+
 # Credential storage
 PRODUCT_PACKAGES += \
     android.software.credentials.prebuilt.xml
