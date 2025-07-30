@@ -12,13 +12,13 @@ endif
 
 ifdef AFTERLIFE_MAINTAINER
     ifeq ($(filter $(AFTERLIFE_MAINTAINER), $(OFFICIAL_MAINTAINER)), $(AFTERLIFE_MAINTAINER))
-        $(warning "afterlife: $(AFTERLIFE_MAINTAINER) is verified as official maintainer, build as official build.")
+        $(warning "Lify: $(AFTERLIFE_MAINTAINER) is verified as official maintainer, build as official build.")
         AFTERLIFE_BUILD_TYPE = OFFICIAL
     else
-        $(warning "afterlife: Unofficial maintainer detected, building as unofficial build.")
+        $(warning "Lify: Unofficial maintainer detected, building as community build.")
     endif
     PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
         ro.afterlife.maintainer=$(AFTERLIFE_MAINTAINER)
 else
-    $(warning "afterlife: No maintainer name detected, building as unofficial build.")
+    $(warning "Lify: No maintainer name detected, building as community build.")
 endif

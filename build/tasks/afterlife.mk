@@ -16,7 +16,7 @@
 # -----------------------------------------------------------------
 # AfterLife OTA update package
 
-AFTERLIFE_ZIP_NAME := afterlife_$(TARGET_DEVICE)-$(shell echo $(AFTERLIFE_VERSION) | tr '[:upper:]' '[:lower:]').zip
+AFTERLIFE_ZIP_NAME := AfterlifeOS_$(TARGET_DEVICE)-$(shell echo $(AFTERLIFE_VERSION) | tr '[:upper:]' '[:lower:]').zip
 AFTERLIFE_TARGET_PACKAGE := $(PRODUCT_OUT)/$(AFTERLIFE_ZIP_NAME)
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum

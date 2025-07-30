@@ -85,9 +85,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
 
-# Do not include art debug targets
-PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
-
 # Strip the local variable table and the local variable type table to reduce
 # the size of the system image. This has no bearing on stack traces, but will
 # leave less information available via JDWP.
@@ -264,19 +261,19 @@ CUSTOM_LOCALES += \
     cy_GB \
     fur_IT
 
-include vendor/afterlife/config/version.mk
+#signed
+include vendor/afterlife/config/afterlife_signed.mk
 
-# Google apps and services
-$(call inherit-product, vendor/gms/products/gms.mk)
+include vendor/afterlife/config/version.mk
 
 # Fonts
 include vendor/afterlife/config/fonts.mk
 
-# Signed
-include vendor/afterlife/config/afterlife_signed.mk
-
-# Overlays Themes
-include packages/overlays/Themes/themes.mk
-
 # Signing
- -include vendor/afterlife-priv/keys/keys.mk
+ifeq ($(AFTERLIFE_BUILD_TYPE),OFFICIAL)
+$(warning "Lify: Enable private keys for sign build.")
+include vendor/afterlife-priv/keys/keys.mk
+else
+$(warning "Lify: Disable private keys for sign build. you need to generate private keys manually.")
+-include vendor/afterlife-priv/keys/keys.mk
+endif
