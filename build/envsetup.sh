@@ -30,65 +30,55 @@ function goafterlife()
     target=$1
     local variant="userdebug"
     local clean_build="true"
-    local release_target="ap4a"  # Default 
 
-    # Path ke file config
-    config_file="vendor/afterlife/release/build_config/ap4a.textproto"
-
-    if [ -f "$config_file" ]; then
-        release_target=$(grep -oP '(?<=value: ").*(?=")' "$config_file" | sed 's/aconfig_value_set-afterlife-//')
-    fi
+    source ${ANDROID_BUILD_TOP}/vendor/afterlife/vars/aosp_target_release
 
     if [ $# -eq 0 ]; then
-        echo "Error: Device codename is required!"
-        return 1
-    fi
+        # No arguments, so let's have the full menu
+        lunch
+    else
+        if [[ "$target" =~ -(user|userdebug|eng)$ ]]; then
+            # A buildtype was specified, assume a full device name
+            lunch $target
+        else
+            while [[ $# -gt 0 ]]; do
+                case "${1}" in
+                    --dirty)
+                        clean_build="false"
+                        shift
+                        ;;
+                    user)
+                        variant="user"
+                        shift
+                        ;;
+                    userdebug)
+                        variant="userdebug"
+                        shift
+                        ;;
+                    eng)
+                        variant="eng"
+                        shift
+                        ;;
+                    *)
+                        # Assume this is the device codename
+                        target="${1}"
+                        shift
+                        ;;
+                esac
+            done
 
-    while [[ $# -gt 0 ]]; do
-        case "${1}" in
-            --dirty)
-                clean_build="false"
-                shift
-                ;;
-            user)
-                variant="user"
-                shift
-                ;;
-            userdebug)
+            if [ -z "$variant" ]; then
                 variant="userdebug"
-                shift
-                ;;
-            eng)
-                variant="eng"
-                shift
-                ;;
-            ap*)
-                release_target="${1}"
-                shift
-                ;;
-            *)
-                target="${1}"
-                shift
-                ;;
-        esac
-    done
+            fi
 
-    if [ -z "$target" ]; then
-        echo "Error: Device codename is required!"
-        return 1
+            lunch afterlife_${target}-${aosp_target_release}-${variant}
+        fi
     fi
-
-    if [ -z "$variant" ]; then
-        variant="userdebug"
-    fi
-
-    lunch afterlife_${target}-${release_target}-${variant}
-
-    rm -rf out/target/product/$target/AfterLife*zip*
 
     if [ "$clean_build" = "true" ]; then
         make installclean
     fi
+
     m afterlife -j$(nproc --all)
 
     return $?
