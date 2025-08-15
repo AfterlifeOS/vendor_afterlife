@@ -1,6 +1,9 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
+# Audio
+$(call inherit-product, vendor/afterlife/audio/Afterlife_audio.mk)
+
 # Bootanimation
 $(call inherit-product, vendor/afterlife/config/Afterlife_bootanimation.mk)
 
@@ -224,6 +227,14 @@ SKIP_BOOT_JARS_CHECK := true
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.storage_manager.enabled=true
+
+# Sound default
+ifneq ($(AFTERLIFE_GAPPS),true)
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.config.ringtone=Cartel.ogg \
+    ro.config.notification_sound=Casper.ogg \
+    ro.config.alarm_alert=frenzy.ogg
+endif
 
 # TouchGestures
 PRODUCT_PACKAGES += \
