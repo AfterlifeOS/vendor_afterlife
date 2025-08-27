@@ -56,3 +56,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.afterlife.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     ro.afterlife.version.codename=$(AFTERLIFE_CODENAME) \
     ro.afterlife.version.extra=$(AFTERLIFE_VERSION_EXTRA)
+
+# Features
+PERF_ANIM_OVERRIDE ?= false
+
+# Features Properties
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.activity_anim_perf_override=$(PERF_ANIM_OVERRIDE)
