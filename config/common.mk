@@ -24,7 +24,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 
 # Additional Packages
-include vendor/extras/prebuilts.mk
+include vendor/extras/afterlife.mk
 
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 # Disable ADB authentication
