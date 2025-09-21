@@ -21,6 +21,13 @@ EXPORT_TO_SOONG := \
 $(call add_soong_config_namespace,afterlifeVarsPlugin)
 $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call add_soong_config_var,afterlifeVarsPlugin,$(v))))
 
+SOONG_CONFIG_NAMESPACES += afterlifeGlobalVars
+SOONG_CONFIG_afterlifeGlobalVars += \
+    spoof_first_api_level_32
+
+# Soong bool variables
+SOONG_CONFIG_afterlifeGlobalVars_spoof_first_api_level_32 := $(SPOOF_FIRST_API_LEVEL_32)
+
 # Camera
 ifneq ($(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED),)
     $(error TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED is deprecated, please migrate to soong_config_set,camera,override_format_from_reserved)
