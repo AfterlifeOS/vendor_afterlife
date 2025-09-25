@@ -232,12 +232,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.storage_manager.enabled=true
 
 # Sound default
-ifneq ($(AFTERLIFE_GAPPS),true)
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.ringtone=Cartel.ogg \
     ro.config.notification_sound=Casper.ogg \
     ro.config.alarm_alert=frenzy.ogg
-endif
 
 # TouchGestures
 PRODUCT_PACKAGES += \
