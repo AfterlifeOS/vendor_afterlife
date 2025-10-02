@@ -113,7 +113,7 @@ function gorelease()
     local srcfile=$(find $srcdir -type f -name "AfterlifeOS*.zip")
     local fname="${srcfile##*/}"
     echo "Filename: $fname"
-    local pdapi="6a204966-bd30-4fd3-8c56-c67c90e870ea"
+    local pdapi="5de6f1b9-e77a-4c97-97bc-a8eae566175f"
     echo "##############################################################"
     echo ""
 
