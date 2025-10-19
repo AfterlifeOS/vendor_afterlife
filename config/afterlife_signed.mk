@@ -14,6 +14,12 @@ ifdef AFTERLIFE_MAINTAINER
     ifeq ($(filter $(AFTERLIFE_MAINTAINER), $(OFFICIAL_MAINTAINER)), $(AFTERLIFE_MAINTAINER))
         $(warning "Lify: $(AFTERLIFE_MAINTAINER) is verified as official maintainer, build as official build.")
         AFTERLIFE_BUILD_TYPE = OFFICIAL
+
+        PRODUCT_PACKAGES += \
+            Updater
+
+        PRODUCT_COPY_FILES += \
+            vendor/afterlife/prebuilt/common/etc/init/init.afterlife-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.afterlife-updater.rc
     else
         $(warning "Lify: Unofficial maintainer detected, building as community build.")
     endif
