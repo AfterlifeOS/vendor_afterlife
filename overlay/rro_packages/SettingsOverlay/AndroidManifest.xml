@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The Proton AOSP Project
+     Copyright (C) 2024 The Clover Project
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.clover.settings.overlay">
+
+    <application android:hasCode="false"/>
+
+    <overlay
+        android:isStatic="true"
+        android:priority="600"
+        android:targetPackage="com.android.settings" />
+</manifest>
