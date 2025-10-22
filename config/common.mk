@@ -187,7 +187,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 #Omni 
 PRODUCT_PACKAGES += \
-    OmniStyle
+    OmniStyle \
+    OmniJaws
 
 # Openssh
 PRODUCT_PACKAGES += \
