@@ -291,8 +291,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     debug.sf.enable_transaction_tracing=false
 endif
 
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/afterlife/overlay/no-rro
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/afterlife/overlay/common
+    vendor/afterlife/overlay/common \
+    vendor/afterlife/overlay/no-rro
 
 PRODUCT_PACKAGES += \
     AndroidBlackThemeOverlay \
