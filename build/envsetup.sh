@@ -28,12 +28,92 @@ function check_product()
     # hide successful answers, but allow the errors to show
 }
 
+# ==============================================================================
+# AFTERLIFE OS - MODERN CLI DASHBOARD
+# ==============================================================================
+
+function afterlife_dashboard() {
+    # Colors variable
+    local R='\033[0;31m'   # Red
+    local G='\033[0;32m'   # Green
+    local Y='\033[1;33m'   # Yellow
+    local B='\033[0;34m'   # Blue
+    local P='\033[0;35m'   # Purple
+    local C='\033[0;36m'   # Cyan
+    local W='\033[1;37m'   # White Bold
+    local N='\033[0m'      # Null/Reset
+
+    local VERSION_FILE="vendor/afterlife/config/version.mk"
+    local AL_VERSION="Unknown"
+    
+    if [ -f "$VERSION_FILE" ]; then
+        local VER_MAJ=$(grep "PRODUCT_VERSION_MAJOR" $VERSION_FILE | head -n 1 | awk -F '=' '{print $2}' | tr -d '[:space:]')
+        local VER_MIN=$(grep "PRODUCT_VERSION_MINOR" $VERSION_FILE | head -n 1 | awk -F '=' '{print $2}' | tr -d '[:space:]')
+        local VER_CODE=$(grep "AFTERLIFE_CODENAME" $VERSION_FILE | head -n 1 | awk -F ':=' '{print $2}' | tr -d '[:space:]')
+        AL_VERSION="${VER_MAJ}.${VER_MIN} (${VER_CODE})"
+    fi
+
+    # Clear terminal screen
+    # clear 
+
+    # 3. Header & ASCII Art
+    echo -e "${P}"
+    echo " _____ ___ _           _ _ ___     _____     "
+    echo "|  _  |  _| |_ ___ ___| |_|  _|___|     |___ "
+    echo "|     |  _|  _| -_|  _| | |  _| -_|  |  |_ -|"
+    echo "|__|__|_| |_| |___|_| |_|_|_| |___|_____|___|"
+    echo -e "${N}"
+    
+    echo -e "${B}======================================================${N}"
+    echo -e "   ${W}WELCOME TO AFTERLIFE OS BUILD ENVIRONMENT${N}"
+    echo -e "${B}======================================================${N}"
+
+    # 4. System Info Section
+    local HOST_NAME=$(hostname)
+    local USER_NAME=$(whoami)
+    local DATE_NOW=$(date +"%A, %d %B %Y")
+    
+    echo -e "  ${Y}User${N}      : ${C}$USER_NAME${N}"
+    echo -e "  ${Y}Host${N}      : ${C}$HOST_NAME${N}"
+    echo -e "  ${Y}Date${N}      : ${C}$DATE_NOW${N}"
+    echo -e "  ${Y}Version${N}   : ${C}$AL_VERSION${N}"
+    echo -e "${B}------------------------------------------------------${N}"
+
+    # Quick Guide / Instructions
+    echo -e "  ${W}HOW TO BUILD:${N}"
+    echo -e ""
+    echo -e "  ${G}1. Start Build${N}"
+    echo -e "     Syntax  : ${Y}goafterlife <codename> [jobs] [options] [variant]${N}"
+    echo -e "     Example : ${C}goafterlife surya 16 --dirty${N}"
+    echo -e ""
+    echo -e "  ${G}2. Upload${N}"
+    echo -e "     Command : ${Y}gorelease <codename>${N}"
+    echo -e ""
+    
+    # Options & Variants Info
+    echo -e "${B}------------------------------------------------------${N}"
+    echo -e "  ${W}ARGUMENTS & OPTIONS:${N}"
+    echo -e "  ${Y}<jobs>${N}      : Number of CPU threads (e.g., 16, 32). Default: ${C}$(nproc --all)${N}"
+    echo -e "  ${Y}--dirty${N}     : Skip 'make installclean' (faster for incremental builds)"
+    echo -e "  ${Y}--release${N}   : Automatically upload build to Gofile after completion"
+    echo -e ""
+    echo -e "  ${W}VARIANTS:${N}"
+    echo -e "  ${Y}user${N}        : Limited access, for public release (secure)"
+    echo -e "  ${Y}userdebug${N}   : Root access + debugging enabled (Default)"
+    echo -e "  ${Y}eng${N}         : Engineering mode with extra debug tools"
+    echo -e "${B}======================================================${N}"
+    echo -e ""
+    echo -e "  ${P}Enjoy building! #NeverDie${N}"
+    echo -e ""
+}
+
 function goafterlife()
 {
     target=$1
     local variant="userdebug"
     local clean_build="true"
     local upload_zip="false"
+    local jobs=$(nproc --all)
 
     source ${ANDROID_BUILD_TOP}/vendor/afterlife/vars/aosp_target_release
 
@@ -68,8 +148,13 @@ function goafterlife()
                         shift
                         ;;
                     *)
-                        # Assume this is the device codename
-                        target="${1}"
+                        # Check if argument is a number (CPU cores)
+                        if [[ "${1}" =~ ^[0-9]+$ ]]; then
+                            jobs="${1}"
+                        else
+                            # Assume this is the device codename
+                            target="${1}"
+                        fi
                         shift
                         ;;
                 esac
@@ -86,10 +171,12 @@ function goafterlife()
     rm -rf out/target/product/$target/AfterlifeOS*zip*
 
     if [ "$clean_build" = "true" ]; then
+        echo "Cleaning build (installclean)..."
         make installclean
     fi
 
-    m afterlife -j$(nproc --all)
+    echo "Starting build with -j${jobs}..."
+    m afterlife -j${jobs}
 
     if [ "$upload_zip" = "true" ]; then
         gorelease $target
@@ -105,6 +192,12 @@ function gorelease()
       exit
     fi
 
+    # Check for jq dependency since Gofile API requires parsing JSON
+    if ! command -v jq &> /dev/null; then
+        echo "Error: jq is not installed. Please install jq to proceed with Gofile upload."
+        return 1
+    fi
+
     echo "##############################################################"
     local target=$1
     echo "Device: $target"
@@ -113,17 +206,36 @@ function gorelease()
     local srcfile=$(find $srcdir -type f -name "AfterlifeOS*.zip")
     local fname="${srcfile##*/}"
     echo "Filename: $fname"
-    local pdapi="5de6f1b9-e77a-4c97-97bc-a8eae566175f"
     echo "##############################################################"
     echo ""
 
     for upfile in "$srcfile"
     do
-        echo "Uploading to server..."
-        uplink=$(curl -# -F "name=$fname" -F "file=@$upfile" -u :$pdapi https://pixeldrain.com/api/file)
-        dlink=$(echo $uplink | grep -Po '(?<="id":")[^"]*')
+        echo "Uploading $fname to Gofile..."
+        local dlink=$(curl -# -X POST https://upload.gofile.io/uploadfile -F "file=@$upfile" | jq -r '.data.downloadPage')
+
+        if [ -z "$dlink" ] || [ "$dlink" == "null" ]; then
+            echo "Error: Upload failed or download link not found."
+            continue
+        fi
+        
+        echo "Upload success: $dlink"
+
         upmsg="${target}: ${dlink}"
-        curl -F document=@"out/target/product/$target/$target.json" "https://api.telegram.org/bot5478001056:AAFXt9jrRlb54Ttx_OtGaZ7NqNCWci_bw4o/sendDocument?chat_id=-1001834737844" -F caption="$upmsg" > /dev/null
+        
+        echo "Sending Telegram notification..."
+        
+        local tg_status=$(curl -s -o /dev/null -w "%{http_code}" \
+            -F document=@"out/target/product/$target/$target.json" \
+            "https://api.telegram.org/bot5478001056:AAFXt9jrRlb54Ttx_OtGaZ7NqNCWci_bw4o/sendDocument?chat_id=-1001834737844" \
+            -F caption="$upmsg")
+
+        if [ "$tg_status" -eq 200 ]; then
+            echo "Telegram notification sent successfully."
+        else
+            echo "Error: Failed to send Telegram notification. HTTP Code: $tg_status"
+        fi
+        
         echo ""
     done
 }
@@ -680,3 +792,5 @@ function fixup_common_out_dir() {
         mkdir -p ${common_out_dir}
     fi
 }
+
+afterlife_dashboard
