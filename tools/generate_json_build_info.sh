@@ -60,7 +60,7 @@ if [ -f $existingOTAjson ]; then
             "version": "'$version'",
             "codename": "'$codename'",
             "filename": "'$filename'",
-            "download": "https://sourceforge.net/projects/afterlife-projects/files/release/'$1'/'$3'/download",
+            "download": "https://afterlifeos.com/device/'$1'",
             "timestamp": '$timestamp',
             "md5": "'$md5'",
             "sha256": "'$sha256'",
@@ -71,6 +71,7 @@ if [ -f $existingOTAjson ]; then
         }
     ]
 }' >> $output
+
 else
         filename=$3
         version=`echo "$3" | cut -d '-' -f 2 | cut -d 'V' -f 2`
