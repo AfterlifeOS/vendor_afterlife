@@ -59,7 +59,8 @@
     <string-array name="config_globallyDisabledComponents" translatable="false">
         <item>com.google.android.gms/com.google.android.gms.stats.service.DropBoxEntryAddedReceiver</item>
 	   <item>com.google.android.gms/com.google.android.gms.chimera.GmsIntentOperationService$GmsExternalReceiver</item>
-	   <!-- Google OTA -->
+	   <item>com.google.android.gms/com.google.android.gms.update.control.NotificationControl</item>
+        <!-- Google OTA -->
         <item>com.google.android.gms/com.google.android.gms.update.OtaSuggestionActivity</item>
         <item>com.google.android.gms/com.google.android.gms.update.OtaSuggestionSummaryProvider</item>
         <item>com.google.android.gms/com.google.android.gms.update.phone.PopupDialog</item>
