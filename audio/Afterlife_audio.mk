@@ -20,5 +20,5 @@ $(call inherit-product, frameworks/base/data/sounds/AudioPackage14.mk)
 LOCAL_PATH := vendor/afterlife/audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/alarms/frenzy.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/alarms/frenzy.ogg \
-    $(LOCAL_PATH)/notifications/Casper.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/Casper.ogg \
-    $(LOCAL_PATH)/ringtones/Cartel.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Cartel.ogg
+    $(LOCAL_PATH)/notifications/Stalk.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/Stalk.ogg \
+    $(LOCAL_PATH)/ringtones/Good_day.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Good_day.ogg

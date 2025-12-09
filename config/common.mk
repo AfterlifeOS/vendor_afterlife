@@ -253,8 +253,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Sound default
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.config.ringtone=Cartel.ogg \
-    ro.config.notification_sound=Casper.ogg \
+    ro.config.ringtone=Good_day.ogg \
+    ro.config.notification_sound=Stalk.ogg \
     ro.config.alarm_alert=frenzy.ogg
 
 # TouchGestures
