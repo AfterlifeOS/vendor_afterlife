@@ -17,23 +17,24 @@ endif
 
 ifeq ($(AFTERLIFE_GAPPS),false)
     AFTERLIFE_ZIP_TYPE := Vanilla
-else ifeq ($(AFTERLIFE_GAPPS),core)
-    AFTERLIFE_ZIP_TYPE := CoreGApps
-    GAPPS_CORE := true
-    WITH_GMS := true
-    $(call inherit-product-if-exists, vendor/gms/gms.mk)
-else ifeq ($(AFTERLIFE_GAPPS),basic)
-    AFTERLIFE_ZIP_TYPE := BasicGApps
-    GAPPS_BASIC := true
-    WITH_GMS := true
-    $(call inherit-product-if-exists, vendor/gms/gms.mk)
-else ifeq ($(AFTERLIFE_GAPPS),true)
-    AFTERLIFE_ZIP_TYPE := GApps
-    GAPPS_FULL := true
-    WITH_GMS := true
-    $(call inherit-product-if-exists, vendor/gms/gms.mk)
 else
-    $(error AFTERLIFE_GAPPS set to invalid value: "$(AFTERLIFE_GAPPS)". Supported values: core, basic, true, false)
+    WITH_GMS := true
+    ifeq ($(AFTERLIFE_GAPPS),core)
+        AFTERLIFE_ZIP_TYPE := CoreGApps
+        GAPPS_CORE := true
+    else ifeq ($(AFTERLIFE_GAPPS),basic)
+        AFTERLIFE_ZIP_TYPE := BasicGApps
+        GAPPS_BASIC := true
+    else ifeq ($(AFTERLIFE_GAPPS),true)
+        AFTERLIFE_ZIP_TYPE := GApps
+        GAPPS_FULL := true
+    else
+        $(error AFTERLIFE_GAPPS set to invalid value: "$(AFTERLIFE_GAPPS)". Supported values: core, basic, true, false)
+    endif
+endif
+
+ifeq ($(WITH_GMS),true)
+    $(call inherit-product-if-exists, vendor/gms/gms.mk)
 endif
 
 AFTERLIFE_VERSION_SUFFIX := $(AFTERLIFE_BUILD_TYPE)_$(AFTERLIFE_BUILD_DATE)
