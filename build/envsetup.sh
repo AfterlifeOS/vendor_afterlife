@@ -32,6 +32,27 @@ function check_product()
 # AFTERLIFE OS - MODERN CLI DASHBOARD
 # ==============================================================================
 
+function setup_ccache() {
+    if [ -z "${CCACHE_EXEC}" ]; then
+        if command -v ccache &>/dev/null; then
+            export USE_CCACHE=1
+            export CCACHE_EXEC=$(command -v ccache)
+            [ -z "${CCACHE_DIR}" ] && export CCACHE_DIR="$HOME/.ccache"
+
+            export CCACHE_MAXSIZE="${CCACHE_MAXSIZE:-75G}"
+            DIRECT_MODE="${DIRECT_MODE:-true}"
+            export CCACHE_SLOPPINESS="time_macros,include_file_ctime,file_stat_matches"
+
+            $CCACHE_EXEC -o compression=true -o compression_level=1 -o direct_mode="${DIRECT_MODE}" -M "${CCACHE_MAXSIZE}" > /dev/null
+
+            if [ -d "$CCACHE_DIR" ]; then
+                CURRENT_CCACHE_SIZE_BYTES=$(du -sb "$CCACHE_DIR" 2>/dev/null | awk '{print $1}')
+                export CURRENT_CCACHE_SIZE_GB=$(echo "$CURRENT_CCACHE_SIZE_BYTES" | awk '{printf "%.2f\n", $1 / 1024 / 1024 / 1024}')
+            fi
+        fi
+    fi
+}
+
 function afterlife_dashboard() {
     # Colors variable
     local R='\033[0;31m'   # Red
@@ -69,6 +90,7 @@ function afterlife_dashboard() {
     echo -e "${B}======================================================${N}"
 
     # 4. System Info Section
+    setup_ccache
     local HOST_NAME=$(hostname)
     local USER_NAME=$(whoami)
     local DATE_NOW=$(date +"%A, %d %B %Y")
@@ -77,6 +99,9 @@ function afterlife_dashboard() {
     echo -e "  ${Y}Host${N}      : ${C}$HOST_NAME${N}"
     echo -e "  ${Y}Date${N}      : ${C}$DATE_NOW${N}"
     echo -e "  ${Y}Version${N}   : ${C}$AL_VERSION${N}"
+    if [ "${USE_CCACHE}" = "1" ]; then
+        echo -e "  ${Y}CCache${N}    : ${C}${CURRENT_CCACHE_SIZE_GB}GB / ${CCACHE_MAXSIZE}${N}"
+    fi
     echo -e "${B}------------------------------------------------------${N}"
 
     # Quick Guide / Instructions
