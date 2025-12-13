@@ -193,6 +193,11 @@ function goafterlife()
         fi
     fi
 
+    if [ $? -ne 0 ]; then
+        echo "Error: Lunch failed. Aborting build process."
+        return 1
+    fi
+
     rm -rf out/target/product/$target/AfterlifeOS*zip*
 
     if [ "$clean_build" = "true" ]; then
@@ -202,6 +207,11 @@ function goafterlife()
 
     echo "Starting build with -j${jobs}..."
     m afterlife -j${jobs}
+
+    if [ $? -ne 0 ]; then
+        echo "Error: Build failed. Aborting release."
+        return 1
+    fi
 
     if [ "$upload_zip" = "true" ]; then
         gorelease $target
