@@ -49,6 +49,12 @@ TIMESTAMP=$(grep "^ro.system.build.date.utc=" "$BUILD_PROP" | cut -d'=' -f2)
 # Get Maintainer from Build Prop (Priority 1 - Simplified)
 MAINTAINER=$(grep "^ro.afterlife.maintainer=" "$BUILD_PROP" | cut -d'=' -f2)
 
+# Get ROM Codename from Build Prop (e.g. serenity)
+ROM_CODENAME=$(grep "^ro.afterlife.version.codename=" "$BUILD_PROP" | cut -d'=' -f2)
+
+# Get Build Type
+BUILD_TYPE=$(grep "^ro.afterlife.releasetype=" "$BUILD_PROP" | cut -d'=' -f2)
+
 # Calculate Checksums and Size
 MD5=$(md5sum "$PRODUCT_OUT/$FILE_NAME" | cut -d' ' -f1)
 SHA256=$(sha256sum "$PRODUCT_OUT/$FILE_NAME" | cut -d' ' -f1)
@@ -77,8 +83,10 @@ fi
 # Priority 3: Default Fallbacks
 if [ -z "$MAINTAINER" ]; then MAINTAINER="Unknown Maintainer"; fi
 if [ -z "$OEM" ]; then OEM="AfterlifeOS"; fi
-if [ -z "$FORUM" ]; then FORUM="https://t.me/yaseaprjktchat"; fi
+if [ -z "$FORUM" ]; then FORUM="https://t.me/AfterLifeOS"; fi
 if [ -z "$TELEGRAM" ]; then TELEGRAM="https://t.me/Afterlife_update"; fi
+if [ -z "$ROM_CODENAME" ]; then ROM_CODENAME="Unknown"; fi
+if [ -z "$BUILD_TYPE" ]; then BUILD_TYPE="Community"; fi
 
 # Fix URL parsing
 if [[ $FORUM != http* ]]; then FORUM="https:$FORUM"; fi
@@ -87,9 +95,11 @@ if [[ $TELEGRAM != http* ]]; then TELEGRAM="https:$TELEGRAM"; fi
 UNIFIED_URL="https://afterlifeos.com/device/$TARGET_DEVICE"
 
 echo "  Device: $TARGET_DEVICE"
+echo "  ROM Codename: $ROM_CODENAME"
 echo "  Variant: $VARIANT"
 echo "  Version: $VERSION"
 echo "  Maintainer: $MAINTAINER"
+echo "  Build Type: $BUILD_TYPE"
 echo "  Output JSON: $OUTPUT_JSON_PATH"
 
 # Call Python Generator
@@ -97,9 +107,11 @@ python3 "$PYTHON_GENERATOR" \
     --json_path "$OTA_JSON_PATH" \
     --output_path "$OUTPUT_JSON_PATH" \
     --device "$TARGET_DEVICE" \
+    --rom_codename "$ROM_CODENAME" \
     --maintainer "$MAINTAINER" \
     --oem "$OEM" \
     --version "$VERSION" \
+    --buildtype "$BUILD_TYPE" \
     --variant "$VARIANT" \
     --filename "$FILE_NAME" \
     --download_url "$UNIFIED_URL" \
