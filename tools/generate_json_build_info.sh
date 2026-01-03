@@ -92,7 +92,7 @@ if [ -z "$BUILD_TYPE" ]; then BUILD_TYPE="Community"; fi
 if [[ $FORUM != http* ]]; then FORUM="https:$FORUM"; fi
 if [[ $TELEGRAM != http* ]]; then TELEGRAM="https:$TELEGRAM"; fi
 
-UNIFIED_URL="https://afterlifeos.com/device/$TARGET_DEVICE"
+UNIFIED_URL="https://afterlifeos.com/download/?search=$TARGET_DEVICE"
 
 echo "  Device: $TARGET_DEVICE"
 echo "  ROM Codename: $ROM_CODENAME"
