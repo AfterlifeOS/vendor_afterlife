@@ -254,6 +254,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/afterlife/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
 
+# Lineage interfaces
+PRODUCT_PACKAGES += \
+    framework_compatibility_matrix.lineage.xml
+
 # rsync
 PRODUCT_PACKAGES += \
     rsync
