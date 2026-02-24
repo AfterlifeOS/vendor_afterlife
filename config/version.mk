@@ -2,7 +2,7 @@ PRODUCT_VERSION_MAJOR = 8
 PRODUCT_VERSION_MINOR = 3
 
 # versioning
-AFTERLIFE_CODENAME := Liberum
+AFTERLIFE_CODENAME := LastBlood
 AFTERLIFE_VERSION_EXTRA := Baklava
 
 ifeq ($(AFTERLIFE_VERSION_APPEND_TIME_OF_DAY),true)
@@ -15,26 +15,15 @@ ifndef AFTERLIFE_GAPPS
     AFTERLIFE_GAPPS := false
 endif
 
-ifeq ($(AFTERLIFE_GAPPS),false)
-    AFTERLIFE_ZIP_TYPE := Vanilla
-else
+ifeq ($(AFTERLIFE_GAPPS),true)
+    AFTERLIFE_ZIP_TYPE := GApps
     WITH_GMS := true
-    ifeq ($(AFTERLIFE_GAPPS),core)
-        AFTERLIFE_ZIP_TYPE := CoreGApps
-        GAPPS_CORE := true
-    else ifeq ($(AFTERLIFE_GAPPS),basic)
-        AFTERLIFE_ZIP_TYPE := BasicGApps
-        GAPPS_BASIC := true
-    else ifeq ($(AFTERLIFE_GAPPS),true)
-        AFTERLIFE_ZIP_TYPE := GApps
-        GAPPS_FULL := true
-    else
-        $(error AFTERLIFE_GAPPS set to invalid value: "$(AFTERLIFE_GAPPS)". Supported values: core, basic, true, false)
-    endif
+else
+    AFTERLIFE_ZIP_TYPE := Vanilla
 endif
 
 ifeq ($(WITH_GMS),true)
-    $(call inherit-product-if-exists, vendor/gms/gms.mk)
+    $(call inherit-product-if-exists, vendor/gms/products/gms.mk)
 endif
 
 AFTERLIFE_VERSION_SUFFIX := $(AFTERLIFE_BUILD_TYPE)_$(AFTERLIFE_BUILD_DATE)

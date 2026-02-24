@@ -198,8 +198,8 @@ PRODUCT_COPY_FILES += \
     vendor/afterlife/prebuilt/common/bin/wipe-frp.sh:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/wipe-frp
 
 # Gamespace
-#PRODUCT_PACKAGES += \
-#   GameSpace
+PRODUCT_PACKAGES += \
+   GameSpace
 
 # Gboard side padding
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -209,9 +209,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_land_r=64
 
 # Omni
-#PRODUCT_PACKAGES += \
-#   OmniStyle \
-#   OmniJaws
+PRODUCT_PACKAGES += \
+   OmniStyle \
+   OmniJaws
+
 
 # LMOFreeform
 #PRODUCT_PACKAGES += \
@@ -237,7 +238,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Packages
 PRODUCT_PACKAGES += \
-    Launcher3QuickStep \
+    AfterHomeQuickStep \
     ThemePicker \
     ThemesStub
 
@@ -276,8 +277,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.alarm_alert=frenzy.ogg
 
 # TouchGestures
-PRODUCT_PACKAGES += \
-    TouchGestures
+#PRODUCT_PACKAGES += \
+#    TouchGestures
 
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
