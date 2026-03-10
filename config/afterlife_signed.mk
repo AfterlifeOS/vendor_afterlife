@@ -23,7 +23,7 @@ ifdef AFTERLIFE_MAINTAINER
     else
         $(warning "Lify: Unofficial maintainer detected, building as community build.")
     endif
-    PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    PRODUCT_PRODUCT_PROPERTIES += \
         ro.afterlife.maintainer=$(AFTERLIFE_MAINTAINER)
 else
     $(warning "Lify: No maintainer name detected, building as community build.")
