@@ -201,6 +201,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
    GameSpace
 
+# AxStuff
+PRODUCT_PACKAGES += \
+   AxQuickLook \
+   AxThemeStore
+
+
 # Gboard side padding
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_port_l=4 \
@@ -215,9 +221,9 @@ PRODUCT_PACKAGES += \
 
 
 # LMOFreeform
-#PRODUCT_PACKAGES += \
-#   LMOFreeform \
-#   LMOFreeformSidebar
+PRODUCT_PACKAGES += \
+   LMOFreeform \
+   LMOFreeformSidebar
 
 # Openssh
 PRODUCT_PACKAGES += \
